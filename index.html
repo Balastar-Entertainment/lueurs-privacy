@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <!--
   Politique de confidentialité de Lueurs — page autonome, prête à héberger.
-  Aucune dépendance externe : pas de script, pas de police, pas de ressource
-  distante. La bascule FR/EN est purement CSS (deux boutons radio), elle
-  fonctionne donc même sans JavaScript.
+  Aucune dépendance externe : pas de police, pas de ressource distante. La bascule
+  entre les neuf langues (fr en es pt it de nl pl sv) est purement CSS (neuf boutons
+  radio), elle fonctionne donc même sans JavaScript ; le script inline en fin de page
+  ne sert qu'à présélectionner la langue du navigateur, et sans lui la page reste en
+  français.
   Éditeur : Balastar Entertainments · contact : loannsloan@gmail.com
 -->
 <html lang="fr">
@@ -11,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lueurs — Politique de confidentialité / Privacy Policy</title>
-<meta name="description" content="Politique de confidentialité de l'application Lueurs (Android) — privacy policy.">
+<meta name="description" content="Politique de confidentialité de l'application Lueurs (Android) — privacy policy (fr en es pt it de nl pl sv).">
 <style>
   :root {
     --bg: #06081a;
@@ -50,10 +52,18 @@
   h1 { font-size: 1.65rem; line-height: 1.25; margin: 18px 0 6px; letter-spacing: -.01em; }
   .sub { color: var(--fg-dim); font-size: .95rem; margin: 0 0 22px; }
 
-  /* --- bascule de langue, sans JavaScript --- */
-  #fr:checked ~ .wrap .i18n-en,
-  #en:checked ~ .wrap .i18n-fr { display: none; }
-  .lang { display: flex; gap: 8px; margin: 0 0 4px; }
+  /* --- bascule de langue : neuf boutons radio, sans JavaScript --- */
+  /* un seul bloc de langue reste affiché : celui du bouton coché */
+  #fr:checked ~ .wrap [data-lang]:not([data-lang="fr"]),
+  #en:checked ~ .wrap [data-lang]:not([data-lang="en"]),
+  #es:checked ~ .wrap [data-lang]:not([data-lang="es"]),
+  #pt:checked ~ .wrap [data-lang]:not([data-lang="pt"]),
+  #it:checked ~ .wrap [data-lang]:not([data-lang="it"]),
+  #de:checked ~ .wrap [data-lang]:not([data-lang="de"]),
+  #nl:checked ~ .wrap [data-lang]:not([data-lang="nl"]),
+  #pl:checked ~ .wrap [data-lang]:not([data-lang="pl"]),
+  #sv:checked ~ .wrap [data-lang]:not([data-lang="sv"]) { display: none; }
+  .lang { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; }
   .lang label {
     cursor: pointer; user-select: none;
     padding: 7px 14px; border-radius: 999px;
@@ -61,7 +71,14 @@
     color: var(--fg-dim); font-size: .85rem; font-weight: 600;
   }
   #fr:checked ~ .wrap label[for="fr"],
-  #en:checked ~ .wrap label[for="en"] {
+  #en:checked ~ .wrap label[for="en"],
+  #es:checked ~ .wrap label[for="es"],
+  #pt:checked ~ .wrap label[for="pt"],
+  #it:checked ~ .wrap label[for="it"],
+  #de:checked ~ .wrap label[for="de"],
+  #nl:checked ~ .wrap label[for="nl"],
+  #pl:checked ~ .wrap label[for="pl"],
+  #sv:checked ~ .wrap label[for="sv"] {
     color: #14102a; background: var(--accent); border-color: var(--accent);
   }
   input.toggle { position: absolute; opacity: 0; pointer-events: none; }
@@ -99,33 +116,75 @@
     h1 { font-size: 1.35rem; }
     section { padding: 16px 15px; border-radius: 13px; }
     th, td { padding: 8px 6px; font-size: .88rem; }
+    .lang label { padding: 6px 11px; font-size: .8rem; }
   }
 </style>
 </head>
 <body>
 <input class="toggle" type="radio" name="lang" id="fr" checked>
 <input class="toggle" type="radio" name="lang" id="en">
+<input class="toggle" type="radio" name="lang" id="es">
+<input class="toggle" type="radio" name="lang" id="pt">
+<input class="toggle" type="radio" name="lang" id="it">
+<input class="toggle" type="radio" name="lang" id="de">
+<input class="toggle" type="radio" name="lang" id="nl">
+<input class="toggle" type="radio" name="lang" id="pl">
+<input class="toggle" type="radio" name="lang" id="sv">
 
 <div class="wrap">
   <header>
     <div class="lang">
       <label for="fr">Français</label>
       <label for="en">English</label>
+      <label for="es">Español</label>
+      <label for="pt">Português</label>
+      <label for="it">Italiano</label>
+      <label for="de">Deutsch</label>
+      <label for="nl">Nederlands</label>
+      <label for="pl">Polski</label>
+      <label for="sv">Svenska</label>
     </div>
     <div class="brand"><span class="star"></span> Lueurs</div>
 
-    <div class="i18n-fr">
+    <div data-lang="fr">
       <h1>Politique de confidentialité</h1>
       <p class="sub">Application Android Lueurs · dernière mise à jour : 30 octobre 2026</p>
     </div>
-    <div class="i18n-en">
+    <div data-lang="en">
       <h1>Privacy Policy</h1>
       <p class="sub">Lueurs Android app · last updated: 30 October 2026</p>
     </div>
+    <div data-lang="es">
+      <h1>Política de privacidad</h1>
+      <p class="sub">Aplicación Android Lueurs · última actualización: 30 de octubre de 2026</p>
+    </div>
+    <div data-lang="pt">
+      <h1>Política de privacidade</h1>
+      <p class="sub">Aplicação Android Lueurs · última atualização: 30 de outubro de 2026</p>
+    </div>
+    <div data-lang="it">
+      <h1>Informativa sulla privacy</h1>
+      <p class="sub">App Android Lueurs · ultimo aggiornamento: 30 ottobre 2026</p>
+    </div>
+    <div data-lang="de">
+      <h1>Datenschutzerklärung</h1>
+      <p class="sub">Android-App Lueurs · letzte Aktualisierung: 30. Oktober 2026</p>
+    </div>
+    <div data-lang="nl">
+      <h1>Privacybeleid</h1>
+      <p class="sub">Android-app Lueurs · laatst bijgewerkt: 30 oktober 2026</p>
+    </div>
+    <div data-lang="pl">
+      <h1>Polityka prywatności</h1>
+      <p class="sub">Aplikacja na Androida Lueurs · ostatnia aktualizacja: 30 października 2026</p>
+    </div>
+    <div data-lang="sv">
+      <h1>Integritetspolicy</h1>
+      <p class="sub">Android-appen Lueurs · senast uppdaterad: 30 oktober 2026</p>
+    </div>
   </header>
-
   <!-- ============================ FRANÇAIS ============================ -->
-  <div class="i18n-fr">
+  <div class="i18n" data-lang="fr">
 
     <section class="summary">
       <h2>En une phrase</h2>
@@ -159,7 +218,8 @@
       <p>Une nuance qui ne dépend pas de Lueurs : si la sauvegarde système d'Android est activée sur
       votre appareil, le système peut inclure les données de l'application dans la sauvegarde rattachée
       à votre compte Google. Nous n'y avons <strong>aucun accès</strong>, et cette sauvegarde se
-      désactive dans les réglages Android (Sauvegarde et restauration).</p>
+      désactive dans les réglages Android (Sauvegarde et restauration). En changeant de téléphone ou en
+      réinstallant l'application, votre progression peut donc être restaurée par ce mécanisme.</p>
       <p>L'application <strong>ne demande ni votre nom, ni votre adresse e-mail, ni votre numéro de
       téléphone, ni votre position, ni l'accès à vos contacts, à vos photos, à votre micro ou à votre
       caméra</strong>. Elle ne lit pas votre calendrier.</p>
@@ -170,8 +230,11 @@
       <ul>
         <li>Vous pouvez effacer l'intégralité de votre ciel et de vos statistiques à tout moment depuis
         <strong>Réglages → Vider mon ciel</strong>.</li>
-        <li>Désinstaller l'application efface définitivement toutes les données locales : elles
-        disparaissent avec l'application, et personne n'en conserve de copie.</li>
+        <li>Désinstaller l'application efface les données locales de l'appareil. Si la sauvegarde
+        système d'Android est activée, une copie peut subsister dans la sauvegarde rattachée à votre
+        compte Google : c'est vous qui la gérez, et vous pouvez la supprimer dans les réglages de votre
+        compte Google ou d'Android. Nous n'avons <strong>aucun accès</strong> à cette copie et nous
+        n'en conservons aucune de notre côté.</li>
       </ul>
     </section>
 
@@ -248,7 +311,7 @@
   </div>
 
   <!-- ============================ ENGLISH ============================ -->
-  <div class="i18n-en">
+  <div class="i18n" data-lang="en">
 
     <section class="summary">
       <h2>In one sentence</h2>
@@ -280,7 +343,8 @@
       identifier, no synchronisation between devices.</p>
       <p>One nuance outside our control: if Android's system backup is enabled on your device, the system
       may include the app's data in the backup tied to your Google account. We have <strong>no
-      access</strong> to it, and it can be turned off in the Android backup settings.</p>
+      access</strong> to it, and it can be turned off in the Android backup settings. When you change
+      phones or reinstall the app, your progress can therefore be restored by this mechanism.</p>
       <p>The app <strong>does not ask for your name, your e-mail address, your phone number or your
       location, and does not access your contacts, photos, microphone or camera</strong>. It does not read
       your calendar.</p>
@@ -291,8 +355,10 @@
       <ul>
         <li>You can erase your entire sky and statistics at any time from
         <strong>Settings → Empty my sky</strong>.</li>
-        <li>Uninstalling the app permanently deletes all local data: it disappears with the app, and no
-        copy is kept by anyone.</li>
+        <li>Uninstalling the app erases the app's local data from your device. If Android's system
+        backup is enabled, a copy may remain in the backup tied to your Google account: you manage it,
+        and you can delete it in the settings of your Google or Android account. We have
+        <strong>no access</strong> to that copy and we keep none of our own.</li>
       </ul>
     </section>
 
@@ -363,7 +429,900 @@
     </section>
   </div>
 
+  <!-- ============================ ESPAÑOL ============================ -->
+  <div class="i18n" data-lang="es">
+
+    <section class="summary">
+      <h2>En una frase</h2>
+      <p>Tus sesiones de concentración se guardan <strong>únicamente en tu dispositivo</strong>. No
+      recibimos nada, no almacenamos nada y no transmitimos nada a servidores propios: de hecho, no
+      tenemos ninguno.</p>
+    </section>
+
+    <section>
+      <h2>1. Quién es responsable</h2>
+      <p>La aplicación está editada por <strong>Balastar Entertainments</strong>, disponible en
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Este editor es el responsable del
+      tratamiento en el sentido del Reglamento General de Protección de Datos (RGPD).</p>
+    </section>
+
+    <section>
+      <h2>2. Datos guardados en tu dispositivo</h2>
+      <p>Para funcionar, Lueurs guarda datos localmente, en el espacio privado de la aplicación:</p>
+      <table>
+        <tr><th>Dato</th><th>Para qué</th><th>Dónde</th></tr>
+        <tr><td>Duración prevista y duración real de cada sesión</td><td>construir tu cielo y tus estadísticas</td><td>almacenamiento privado del dispositivo</td></tr>
+        <tr><td>Fecha y hora de inicio de la sesión</td><td>colocar la estrella y calcular las rachas de días</td><td>igual</td></tr>
+        <tr><td>Intención elegida (Trabajo, Estudio, Lectura, Creativo, Deporte)</td><td>color de la estrella y reparto del tiempo</td><td>igual</td></tr>
+        <tr><td>Logros desbloqueados</td><td>mostrar la cuadrícula de logros</td><td>igual</td></tr>
+        <tr><td>Tema de cielo elegido y temas desbloqueados</td><td>mostrar tu cielo tal como lo has configurado</td><td>igual</td></tr>
+        <tr><td>Ajustes (animaciones reducidas, mantener la pantalla encendida, última duración y última intención elegidas)</td><td>respetar tus preferencias</td><td>igual</td></tr>
+      </table>
+      <p>Estos datos <strong>nunca salen del dispositivo</strong>. No se envían a nadie: ni a nosotros, ni
+      a un servicio de análisis, ni a un servicio de copia de seguridad en la nube. No hay <strong>ninguna
+      cuenta</strong>, ningún identificador de usuario, ninguna sincronización entre dispositivos.</p>
+      <p>Un matiz que no depende de Lueurs: si la copia de seguridad del sistema Android está activada en
+      tu dispositivo, el sistema puede incluir los datos de la aplicación en la copia de seguridad
+      vinculada a tu cuenta de Google. No tenemos <strong>ningún acceso</strong> a ella, y se desactiva
+      en los ajustes de Android (Copia de seguridad y restauración). Al cambiar de teléfono o reinstalar
+      la aplicación, tu progreso puede restaurarse mediante este mecanismo.</p>
+      <p>La aplicación <strong>no pide tu nombre, ni tu dirección de correo electrónico, ni tu número de
+      teléfono, ni tu ubicación, ni el acceso a tus contactos, a tus fotos, a tu micrófono o a tu
+      cámara</strong>. Tampoco lee tu calendario.</p>
+    </section>
+
+    <section>
+      <h2>3. Eliminación de estos datos</h2>
+      <ul>
+        <li>Puedes borrar la totalidad de tu cielo y de tus estadísticas en cualquier momento desde
+        <strong>Ajustes → Vaciar mi cielo</strong>.</li>
+        <li>Desinstalar la aplicación borra los datos locales del dispositivo. Si la copia de seguridad
+        del sistema Android está activada, puede quedar una copia en la copia de seguridad vinculada a
+        tu cuenta de Google: la gestionas tú y puedes eliminarla en los ajustes de tu cuenta de Google
+        o de Android. No tenemos <strong>ningún acceso</strong> a esa copia y no conservamos ninguna
+        por nuestra parte.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Publicidad (Google AdMob)</h2>
+      <p>La aplicación es gratuita y se financia con publicidad, proporcionada por <strong>Google
+      AdMob</strong>. Eso implica que Google y sus socios publicitarios pueden acceder a cierta
+      información técnica relacionada con tu dispositivo para mostrar anuncios, en particular:</p>
+      <ul>
+        <li>el <strong>identificador de publicidad</strong> de tu dispositivo (un identificador que se
+        puede restablecer y que puede borrarse o desactivarse en los ajustes de Android);</li>
+        <li>la dirección IP, localizada de forma aproximada por los servidores publicitarios;</li>
+        <li>información técnica sobre el dispositivo y el sistema (modelo, versión de Android, idioma,
+        versión de la aplicación);</li>
+        <li>información sobre la visualización de los anuncios (anuncio visto, clic, error de carga).</li>
+      </ul>
+      <p>Estos tratamientos son responsabilidad de Google. Para saber más:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      y <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Lo que no hacemos</strong>: no vinculamos ninguna de tus sesiones de concentración a tu
+      identificador de publicidad, no creamos ningún perfil y no recibimos ningún dato personal sobre ti.</p>
+      <p><strong>Consentimiento.</strong> En el primer inicio, un formulario de consentimiento (mecanismo
+      UMP de Google) te pide tu elección. Mientras no lo aceptes, no se realiza ninguna solicitud
+      publicitaria: la aplicación funciona con normalidad, sin publicidad. Puedes modificar o retirar tu
+      elección en cualquier momento desde <strong>Ajustes → Gestionar mis opciones de privacidad</strong>.</p>
+      <p><strong>Dónde está la publicidad.</strong> Un banner únicamente en la pantalla «Mi cielo». Una
+      pantalla completa como máximo una vez cada cuatro sesiones terminadas, y solo después de haber
+      pulsado «Continuar». Un vídeo recompensado, que solo se inicia si pulsas tú mismo el botón «Ver un
+      vídeo corto para desbloquear». Nunca hay publicidad en la pantalla de preparación, ni durante una
+      sesión.</p>
+    </section>
+
+    <section>
+      <h2>5. Permisos solicitados por la aplicación</h2>
+      <table>
+        <tr><th>Permiso</th><th>Motivo</th></tr>
+        <tr><td><code>INTERNET</code></td><td>cargar los anuncios (no se transmite ningún dato de sesión)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>saber si hay conexión antes de solicitar un anuncio</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>identificador de publicidad, necesario para los anuncios en Android 13 y posteriores</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>mantener la pantalla encendida durante una sesión (permiso declarado por el SDK publicitario de Google, usado por Lueurs para esa función)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>declarados por el SDK publicitario de Google: enmarcan el uso que Google hace de los identificadores y de las API publicitarias de Android, y no dan a Lueurs acceso a ningún dato</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>declarado por una biblioteca técnica incluida con el SDK publicitario (AndroidX Work); Lueurs no inicia ningún servicio en primer plano</td></tr>
+      </table>
+      <p>Estos permisos no dan acceso a ningún dato personal: ni ubicación, ni contactos, ni fotos, ni
+      micrófono, ni cámara. El manifiesto publicado contiene además un permiso interno propio de la
+      aplicación, generado por la biblioteca base de Android, que no da acceso a ningún dato.</p>
+    </section>
+
+    <section>
+      <h2>6. Tus derechos (RGPD)</h2>
+      <p>Dispones de derecho de acceso, rectificación, supresión, limitación y oposición. Como los datos
+      de la aplicación permanecen en tu dispositivo y nunca se nos transmiten, estos derechos se ejercen
+      directamente en la aplicación (Ajustes → Vaciar mi cielo, o desinstalación): no conservamos ningún
+      dato sobre ti que pudiéramos mostrarte o borrar.</p>
+      <p>Para los tratamientos publicitarios, estos derechos se ejercen ante Google (ver los enlaces
+      anteriores) y, en Francia, ante la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>Para cualquier pregunta, escribe a
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Menores</h2>
+      <p>La aplicación no está destinada a menores de 13 años. No recoge ningún dato de ellos y su
+      publicidad no está configurada para un público infantil.</p>
+    </section>
+
+    <section>
+      <h2>8. Cambios</h2>
+      <p>Cualquier evolución de esta política se publicará en esta dirección, con una fecha de
+      actualización modificada. Si una evolución cambia la forma en que se tratan los datos, la aplicación
+      lo avisará antes de su entrada en vigor.</p>
+    </section>
+  </div>
+  <!-- ============================ PORTUGUÊS ============================ -->
+  <div class="i18n" data-lang="pt">
+
+    <section class="summary">
+      <h2>Numa frase</h2>
+      <p>As tuas sessões de concentração são guardadas <strong>apenas no teu dispositivo</strong>. Não
+      recebemos nada, não guardamos nada e não transmitimos nada para servidores nossos — aliás, não
+      temos nenhum.</p>
+    </section>
+
+    <section>
+      <h2>1. Quem é responsável</h2>
+      <p>A aplicação é editada pela <strong>Balastar Entertainments</strong>, contactável em
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Este editor é o responsável pelo
+      tratamento na aceção do Regulamento Geral sobre a Proteção de Dados (RGPD).</p>
+    </section>
+
+    <section>
+      <h2>2. Dados guardados no teu dispositivo</h2>
+      <p>Para funcionar, o Lueurs guarda dados localmente, no espaço privado da aplicação:</p>
+      <table>
+        <tr><th>Dado</th><th>Para quê</th><th>Onde</th></tr>
+        <tr><td>Duração prevista e duração real de cada sessão</td><td>construir o teu céu e as tuas estatísticas</td><td>armazenamento privado do dispositivo</td></tr>
+        <tr><td>Data e hora de início da sessão</td><td>colocar a estrela e calcular as séries de dias</td><td>idem</td></tr>
+        <tr><td>Intenção escolhida (Trabalho, Estudo, Leitura, Criativo, Desporto)</td><td>cor da estrela e repartição do tempo</td><td>idem</td></tr>
+        <tr><td>Conquistas desbloqueadas</td><td>mostrar a grelha de conquistas</td><td>idem</td></tr>
+        <tr><td>Tema de céu escolhido e temas desbloqueados</td><td>mostrar o teu céu tal como o configuraste</td><td>idem</td></tr>
+        <tr><td>Definições (animações reduzidas, ecrã sempre ligado, última duração e última intenção escolhidas)</td><td>respeitar as tuas preferências</td><td>idem</td></tr>
+      </table>
+      <p>Estes dados <strong>nunca saem do dispositivo</strong>. Não são enviados a ninguém: nem a nós,
+      nem a um serviço de análise, nem a um serviço de cópia de segurança na nuvem. Não existe
+      <strong>nenhuma conta</strong>, nenhum identificador de utilizador, nenhuma sincronização entre
+      dispositivos.</p>
+      <p>Uma nuance que não depende do Lueurs: se a cópia de segurança do sistema Android estiver ativada
+      no teu dispositivo, o sistema pode incluir os dados da aplicação na cópia de segurança associada
+      à tua conta Google. Não temos <strong>nenhum acesso</strong> a ela, e desativa-se nas definições do
+      Android (Cópia de segurança e reposição). Ao mudar de telefone ou ao reinstalar a aplicação, o teu
+      progresso pode ser restaurado por este mecanismo.</p>
+      <p>A aplicação <strong>não pede o teu nome, nem o teu endereço de correio eletrónico, nem o teu
+      número de telefone, nem a tua localização, nem o acesso aos teus contactos, às tuas fotografias, ao
+      teu microfone ou à tua câmara</strong>. Também não lê o teu calendário.</p>
+    </section>
+
+    <section>
+      <h2>3. Eliminação destes dados</h2>
+      <ul>
+        <li>Podes apagar a totalidade do teu céu e das tuas estatísticas em qualquer momento em
+        <strong>Definições → Esvaziar o meu céu</strong>.</li>
+        <li>Desinstalar a aplicação apaga os dados locais do dispositivo. Se a cópia de segurança do
+        sistema Android estiver ativada, pode subsistir uma cópia na cópia de segurança associada à tua
+        conta Google: és tu que a geres e podes eliminá-la nas definições da tua conta Google ou do
+        Android. Não temos <strong>nenhum acesso</strong> a essa cópia e não guardamos nenhuma do nosso
+        lado.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Publicidade (Google AdMob)</h2>
+      <p>A aplicação é gratuita e financiada pela publicidade, fornecida pela <strong>Google
+      AdMob</strong>. Isso implica que a Google e os seus parceiros publicitários podem aceder a certas
+      informações técnicas relacionadas com o teu dispositivo para apresentar anúncios, em particular:</p>
+      <ul>
+        <li>o <strong>identificador de publicidade</strong> do teu dispositivo (um identificador que pode
+        ser reposto e que pode ser apagado ou desativado nas definições do Android);</li>
+        <li>o endereço IP, localizado de forma aproximada pelos servidores publicitários;</li>
+        <li>informações técnicas sobre o dispositivo e o sistema (modelo, versão do Android, idioma,
+        versão da aplicação);</li>
+        <li>informações sobre a apresentação dos anúncios (anúncio visto, clique, falha de carregamento).</li>
+      </ul>
+      <p>Estes tratamentos são da responsabilidade da Google. Para saber mais:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      e <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>O que não fazemos</strong>: não associamos nenhuma das tuas sessões de concentração ao
+      teu identificador de publicidade, não construímos nenhum perfil e não recebemos nenhum dado pessoal
+      sobre ti.</p>
+      <p><strong>Consentimento.</strong> No primeiro arranque, um formulário de consentimento (mecanismo
+      UMP da Google) pede-te a tua escolha. Enquanto não aceitares, não é efetuado nenhum pedido
+      publicitário: a aplicação funciona normalmente, sem publicidade. Podes alterar ou retirar a tua
+      escolha em qualquer momento em <strong>Definições → Gerir as minhas escolhas de privacidade</strong>.</p>
+      <p><strong>Onde está a publicidade.</strong> Um banner apenas no ecrã «O meu céu». Um ecrã inteiro no
+      máximo uma vez a cada quatro sessões terminadas, e só depois de tocares em «Continuar». Um vídeo
+      recompensado, que só arranca se tocares tu próprio no botão «Ver um vídeo curto para desbloquear».
+      Nunca há publicidade no ecrã de preparação, nem durante uma sessão.</p>
+    </section>
+
+    <section>
+      <h2>5. Autorizações pedidas pela aplicação</h2>
+      <table>
+        <tr><th>Autorização</th><th>Motivo</th></tr>
+        <tr><td><code>INTERNET</code></td><td>carregar os anúncios (nenhum dado de sessão é transmitido)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>saber se existe ligação antes de pedir um anúncio</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>identificador de publicidade, necessário ao funcionamento dos anúncios no Android 13 e seguintes</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>manter o ecrã ligado durante uma sessão (autorização declarada pelo SDK publicitário da Google, usada pelo Lueurs para essa função)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>declaradas pelo SDK publicitário da Google: enquadram o uso que a Google faz dos identificadores e das API publicitárias do Android, e não dão ao Lueurs acesso a nenhum dado</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>declarada por uma biblioteca técnica incluída no SDK publicitário (AndroidX Work); o Lueurs não inicia nenhum serviço em primeiro plano</td></tr>
+      </table>
+      <p>Estas autorizações não dão acesso a nenhum dado pessoal: nem localização, nem contactos, nem
+      fotografias, nem microfone, nem câmara. O manifesto publicado contém ainda uma autorização interna
+      própria da aplicação, gerada pela biblioteca de base do Android, que não dá acesso a nenhum dado.</p>
+    </section>
+
+    <section>
+      <h2>6. Os teus direitos (RGPD)</h2>
+      <p>Dispões do direito de acesso, retificação, apagamento, limitação e oposição. Como os dados da
+      aplicação permanecem no teu dispositivo e nunca nos são transmitidos, estes direitos exercem-se
+      diretamente na aplicação (Definições → Esvaziar o meu céu, ou desinstalação): não detemos nenhum dado
+      sobre ti que pudéssemos mostrar-te ou apagar.</p>
+      <p>Para os tratamentos publicitários, estes direitos exercem-se junto da Google (ver as ligações
+      acima) e, em França, junto da CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>Para qualquer questão, escreve para
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Crianças</h2>
+      <p>A aplicação não se destina a crianças com menos de 13 anos. Não recolhe nenhum dado junto delas e
+      a publicidade não está configurada para um público infantil.</p>
+    </section>
+
+    <section>
+      <h2>8. Alterações</h2>
+      <p>Qualquer evolução desta política será publicada neste endereço, com uma data de atualização
+      alterada. Se uma evolução alterar a forma como os dados são tratados, a aplicação avisará antes da
+      entrada em vigor.</p>
+    </section>
+  </div>
+
+  <!-- ============================ ITALIANO ============================ -->
+  <div class="i18n" data-lang="it">
+
+    <section class="summary">
+      <h2>In una frase</h2>
+      <p>Le tue sessioni di concentrazione sono salvate <strong>solo sul tuo dispositivo</strong>. Non
+      riceviamo nulla, non conserviamo nulla e non trasmettiamo nulla a server nostri: non ne abbiamo
+      nessuno.</p>
+    </section>
+
+    <section>
+      <h2>1. Chi è responsabile</h2>
+      <p>L'app è pubblicata da <strong>Balastar Entertainments</strong>, contattabile all'indirizzo
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Questo editore è il titolare del
+      trattamento ai sensi del Regolamento generale sulla protezione dei dati (GDPR).</p>
+    </section>
+
+    <section>
+      <h2>2. Dati salvati sul tuo dispositivo</h2>
+      <p>Per funzionare, Lueurs salva i dati localmente, nello spazio privato dell'app:</p>
+      <table>
+        <tr><th>Dato</th><th>Perché</th><th>Dove</th></tr>
+        <tr><td>Durata prevista e durata effettiva di ogni sessione</td><td>costruire il tuo cielo e le tue statistiche</td><td>memoria privata del dispositivo</td></tr>
+        <tr><td>Data e ora di inizio della sessione</td><td>collocare la stella e calcolare le serie di giorni</td><td>idem</td></tr>
+        <tr><td>Intenzione scelta (Lavoro, Studio, Lettura, Creativo, Sport)</td><td>colore della stella e ripartizione del tempo</td><td>idem</td></tr>
+        <tr><td>Obiettivi sbloccati</td><td>mostrare la griglia degli obiettivi</td><td>idem</td></tr>
+        <tr><td>Tema del cielo scelto e temi sbloccati</td><td>mostrare il tuo cielo come l'hai impostato</td><td>idem</td></tr>
+        <tr><td>Impostazioni (animazioni ridotte, schermo sempre acceso, ultima durata e ultima intenzione scelte)</td><td>rispettare le tue preferenze</td><td>idem</td></tr>
+      </table>
+      <p>Questi dati <strong>non lasciano mai il dispositivo</strong>. Non vengono inviati a nessuno: né a
+      noi, né a un servizio di analisi, né a un servizio di backup nel cloud. Non esiste <strong>nessun
+      account</strong>, nessun identificatore utente, nessuna sincronizzazione tra dispositivi.</p>
+      <p>Una precisazione che non dipende da Lueurs: se il backup di sistema di Android è attivo sul tuo
+      dispositivo, il sistema può includere i dati dell'app nel backup collegato al tuo account Google.
+      Non vi abbiamo <strong>alcun accesso</strong>, e si disattiva nelle impostazioni di Android
+      (Backup e ripristino). Cambiando telefono o reinstallando l'app, i tuoi progressi possono quindi
+      essere ripristinati da questo meccanismo.</p>
+      <p>L'app <strong>non chiede il tuo nome, il tuo indirizzo e-mail, il tuo numero di telefono o la tua
+      posizione, e non accede ai tuoi contatti, alle tue foto, al microfono o alla fotocamera</strong>. Non
+      legge il tuo calendario.</p>
+    </section>
+
+    <section>
+      <h2>3. Cancellazione di questi dati</h2>
+      <ul>
+        <li>Puoi cancellare l'intero cielo e le tue statistiche in qualsiasi momento da
+        <strong>Impostazioni → Svuota il mio cielo</strong>.</li>
+        <li>Disinstallare l'app cancella i dati locali del dispositivo. Se il backup di sistema di
+        Android è attivo, può restare una copia nel backup collegato al tuo account Google: la gestisci
+        tu e puoi eliminarla nelle impostazioni del tuo account Google o di Android. Non abbiamo
+        <strong>nessun accesso</strong> a quella copia e non ne conserviamo nessuna da parte nostra.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Pubblicità (Google AdMob)</h2>
+      <p>L'app è gratuita e finanziata dalla pubblicità, fornita da <strong>Google AdMob</strong>. Questo
+      implica che Google e i suoi partner pubblicitari possono accedere a certe informazioni tecniche
+      relative al tuo dispositivo per mostrare annunci, in particolare:</p>
+      <ul>
+        <li>l'<strong>identificatore pubblicitario</strong> del tuo dispositivo (un identificatore
+        reimpostabile, che può essere cancellato o disattivato nelle impostazioni di Android);</li>
+        <li>l'indirizzo IP, localizzato in modo approssimativo dai server pubblicitari;</li>
+        <li>informazioni tecniche sul dispositivo e sul sistema (modello, versione di Android, lingua,
+        versione dell'app);</li>
+        <li>informazioni sulla visualizzazione degli annunci (annuncio visto, clic, errore di
+        caricamento).</li>
+      </ul>
+      <p>Questi trattamenti sono di responsabilità di Google. Per saperne di più:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      e <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Ciò che non facciamo</strong>: non colleghiamo nessuna delle tue sessioni di
+      concentrazione al tuo identificatore pubblicitario, non costruiamo alcun profilo e non riceviamo
+      alcun dato personale che ti riguardi.</p>
+      <p><strong>Consenso.</strong> Al primo avvio, un modulo di consenso (meccanismo UMP di Google) ti
+      chiede la tua scelta. Finché non accetti, non viene effettuata nessuna richiesta pubblicitaria:
+      l'app funziona normalmente, senza pubblicità. Puoi modificare o revocare la tua scelta in qualsiasi
+      momento da <strong>Impostazioni → Gestisci le mie scelte sulla privacy</strong>.</p>
+      <p><strong>Dove sono gli annunci.</strong> Un banner solo nella schermata «Il mio cielo». Uno schermo
+      intero al massimo una volta ogni quattro sessioni completate, e solo dopo che hai toccato
+      «Continua». Un video con premio, che parte solo se tocchi tu stesso il pulsante «Guarda un breve
+      video per sbloccare». Mai pubblicità nella schermata di preparazione, mai durante una sessione.</p>
+    </section>
+
+    <section>
+      <h2>5. Autorizzazioni richieste dall'app</h2>
+      <table>
+        <tr><th>Autorizzazione</th><th>Motivo</th></tr>
+        <tr><td><code>INTERNET</code></td><td>caricare gli annunci (nessun dato di sessione viene trasmesso)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>sapere se una connessione è disponibile prima di richiedere un annuncio</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>identificatore pubblicitario, necessario al funzionamento degli annunci su Android 13 e versioni successive</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>tenere lo schermo acceso durante una sessione (autorizzazione dichiarata dall'SDK pubblicitario di Google, usata da Lueurs per questa funzione)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>dichiarate dall'SDK pubblicitario di Google: inquadrano l'uso che Google fa degli identificatori e delle API pubblicitarie di Android e non danno a Lueurs accesso ad alcun dato</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>dichiarata da una libreria tecnica inclusa nell'SDK pubblicitario (AndroidX Work); Lueurs non avvia alcun servizio in primo piano</td></tr>
+      </table>
+      <p>Nessuna di queste autorizzazioni dà accesso a dati personali: né posizione, né contatti, né foto,
+      né microfono, né fotocamera. Il manifest pubblicato contiene inoltre un'autorizzazione interna
+      dell'app, generata dalla libreria di base di Android, che non dà accesso ad alcun dato.</p>
+    </section>
+
+    <section>
+      <h2>6. I tuoi diritti (GDPR)</h2>
+      <p>Hai diritto di accesso, rettifica, cancellazione, limitazione e opposizione. Poiché i dati
+      dell'app restano sul tuo dispositivo e non ci vengono mai trasmessi, questi diritti si esercitano
+      direttamente nell'app (Impostazioni → Svuota il mio cielo, oppure disinstallazione): non deteniamo
+      alcun dato che ti riguardi che potremmo mostrarti o cancellare.</p>
+      <p>Per i trattamenti pubblicitari, questi diritti si esercitano presso Google (vedi i link sopra) e,
+      in Francia, presso la CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>Per qualsiasi domanda, scrivi a
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Minori</h2>
+      <p>L'app non è destinata ai minori di 13 anni. Non raccoglie alcun dato che li riguardi e la sua
+      pubblicità non è configurata per un pubblico infantile.</p>
+    </section>
+
+    <section>
+      <h2>8. Modifiche</h2>
+      <p>Qualsiasi evoluzione di questa informativa sarà pubblicata a questo indirizzo, con una data di
+      aggiornamento modificata. Se un'evoluzione cambia il modo in cui i dati sono trattati, l'app lo
+      segnalerà prima dell'entrata in vigore.</p>
+    </section>
+  </div>
+
+  <!-- ============================ DEUTSCH ============================ -->
+  <div class="i18n" data-lang="de">
+
+    <section class="summary">
+      <h2>In einem Satz</h2>
+      <p>Deine Fokus-Sitzungen werden <strong>ausschließlich auf deinem Gerät</strong> gespeichert. Wir
+      empfangen nichts, wir speichern nichts und wir übertragen nichts an eigene Server — wir haben
+      nämlich keine.</p>
+    </section>
+
+    <section>
+      <h2>1. Wer ist verantwortlich</h2>
+      <p>Die App wird von <strong>Balastar Entertainments</strong> herausgegeben, erreichbar unter
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Dieser Herausgeber ist
+      Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO).</p>
+    </section>
+
+    <section>
+      <h2>2. Auf deinem Gerät gespeicherte Daten</h2>
+      <p>Um zu funktionieren, speichert Lueurs Daten lokal, im privaten Speicher der App:</p>
+      <table>
+        <tr><th>Datum</th><th>Wofür</th><th>Wo</th></tr>
+        <tr><td>Geplante und tatsächlich verbrachte Dauer jeder Sitzung</td><td>um deinen Himmel und deine Statistik aufzubauen</td><td>privater Speicher des Geräts</td></tr>
+        <tr><td>Datum und Uhrzeit des Sitzungsbeginns</td><td>um den Stern zu setzen und Tages-Serien zu berechnen</td><td>dasselbe</td></tr>
+        <tr><td>Gewählte Absicht (Arbeit, Lernen, Lesen, Kreativ, Sport)</td><td>Farbe des Sterns und Zeitaufteilung</td><td>dasselbe</td></tr>
+        <tr><td>Freigeschaltete Erfolge</td><td>um das Erfolgsraster anzuzeigen</td><td>dasselbe</td></tr>
+        <tr><td>Gewähltes Himmelsthema und freigeschaltete Themen</td><td>um deinen Himmel so anzuzeigen, wie du ihn eingestellt hast</td><td>dasselbe</td></tr>
+        <tr><td>Einstellungen (reduzierte Animationen, Bildschirm anlassen, zuletzt gewählte Dauer und Absicht)</td><td>um deine Vorlieben zu berücksichtigen</td><td>dasselbe</td></tr>
+      </table>
+      <p>Diese Daten <strong>verlassen das Gerät nie</strong>. Sie werden an niemanden gesendet: weder an
+      uns, noch an einen Analysedienst, noch an einen Cloud-Backup-Dienst. Es gibt <strong>kein
+      Konto</strong>, keine Nutzerkennung, keine Synchronisierung zwischen Geräten.</p>
+      <p>Eine Nuance, die nicht von Lueurs abhängt: wenn das Android-System-Backup auf deinem Gerät
+      aktiviert ist, kann das System die Daten der App in das Backup aufnehmen, das mit deinem
+      Google-Konto verknüpft ist. Wir haben <strong>keinen Zugriff</strong> darauf, und es lässt sich in
+      den Android-Einstellungen (Sichern und Wiederherstellen) deaktivieren. Beim Telefonwechsel oder
+      bei einer Neuinstallation kann dein Fortschritt daher über diesen Mechanismus wiederhergestellt
+      werden.</p>
+      <p>Die App <strong>fragt weder nach deinem Namen noch nach deiner E-Mail-Adresse, deiner
+      Telefonnummer oder deinem Standort und greift nicht auf deine Kontakte, deine Fotos, dein Mikrofon
+      oder deine Kamera zu</strong>. Sie liest auch deinen Kalender nicht.</p>
+    </section>
+
+    <section>
+      <h2>3. Löschung dieser Daten</h2>
+      <ul>
+        <li>Du kannst deinen gesamten Himmel und deine Statistik jederzeit über
+        <strong>Einstellungen → Meinen Himmel leeren</strong> löschen.</li>
+        <li>Das Deinstallieren der App löscht die lokalen Daten des Geräts. Ist das Android-System-Backup
+        aktiviert, kann eine Kopie im Backup verbleiben, das mit deinem Google-Konto verknüpft ist: du
+        verwaltest sie und kannst sie in den Einstellungen deines Google- oder Android-Kontos löschen.
+        Wir haben <strong>keinen Zugriff</strong> darauf und behalten selbst keine Kopie.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Werbung (Google AdMob)</h2>
+      <p>Die App ist kostenlos und wird durch Werbung finanziert, die von <strong>Google AdMob</strong>
+      bereitgestellt wird. Das bedeutet, dass Google und seine Werbepartner auf bestimmte technische
+      Informationen zu deinem Gerät zugreifen können, um Anzeigen auszuliefern, insbesondere:</p>
+      <ul>
+        <li>die <strong>Werbe-ID</strong> deines Geräts (eine zurücksetzbare Kennung, die in den
+        Android-Einstellungen gelöscht oder deaktiviert werden kann);</li>
+        <li>die IP-Adresse, die von den Werbeservern grob verortet wird;</li>
+        <li>technische Informationen über Gerät und System (Modell, Android-Version, Sprache,
+        App-Version);</li>
+        <li>Informationen zur Anzeigenauslieferung (gesehene Anzeige, Klick, Ladefehler).</li>
+      </ul>
+      <p>Diese Verarbeitungen liegen in der Verantwortung von Google. Mehr dazu:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      und <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Was wir nicht tun</strong>: Wir verknüpfen keine deiner Fokus-Sitzungen mit deiner
+      Werbe-ID, wir erstellen kein Profil und wir erhalten keine personenbezogenen Daten über dich.</p>
+      <p><strong>Einwilligung.</strong> Beim ersten Start fragt ein Einwilligungsformular
+      (UMP-Mechanismus von Google) nach deiner Wahl. Solange du nicht zugestimmt hast, wird keine
+      Werbeanfrage gestellt: die App funktioniert normal, ohne Werbung. Du kannst deine Wahl jederzeit
+      über <strong>Einstellungen → Datenschutz-Auswahl verwalten</strong> ändern oder widerrufen.</p>
+      <p><strong>Wo die Werbung ist.</strong> Ein Banner nur auf dem Bildschirm „Mein Himmel“. Ein
+      Vollbild höchstens einmal alle vier abgeschlossenen Sitzungen, und nur nachdem du auf „Weiter“
+      getippt hast. Ein Werbevideo, das nur startet, wenn du selbst auf die Schaltfläche „Ein kurzes
+      Video ansehen und freischalten“ tippst. Nie Werbung auf dem Vorbereitungsbildschirm, nie während
+      einer Sitzung.</p>
+    </section>
+
+    <section>
+      <h2>5. Von der App angeforderte Berechtigungen</h2>
+      <table>
+        <tr><th>Berechtigung</th><th>Grund</th></tr>
+        <tr><td><code>INTERNET</code></td><td>Anzeigen laden (es werden keine Sitzungsdaten übertragen)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>wissen, ob eine Verbindung verfügbar ist, bevor eine Anzeige angefordert wird</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>Werbe-ID, erforderlich für Anzeigen unter Android 13 und neuer</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>den Bildschirm während einer Sitzung anlassen (Berechtigung aus dem Werbe-SDK von Google, von Lueurs für diesen Zweck genutzt)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>vom Werbe-SDK von Google deklariert: sie rahmen Googles Nutzung der Werbe-IDs und der Werbe-APIs von Android ein und geben Lueurs keinen Zugriff auf Daten</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>von einer technischen Bibliothek deklariert, die mit dem Werbe-SDK ausgeliefert wird (AndroidX Work); Lueurs startet keinen Vordergrunddienst</td></tr>
+      </table>
+      <p>Keine dieser Berechtigungen gibt Zugriff auf personenbezogene Daten: kein Standort, keine
+      Kontakte, keine Fotos, kein Mikrofon, keine Kamera. Das veröffentlichte Manifest enthält außerdem
+      eine app-interne Berechtigung, die von der Android-Basisbibliothek erzeugt wird und keinen Zugriff
+      auf Daten gibt.</p>
+    </section>
+
+    <section>
+      <h2>6. Deine Rechte (DSGVO)</h2>
+      <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Widerspruch. Da die
+      Daten der App auf deinem Gerät bleiben und uns nie übermittelt werden, werden diese Rechte direkt in
+      der App ausgeübt (Einstellungen → Meinen Himmel leeren, oder Deinstallation): wir besitzen keine
+      Daten über dich, die wir dir zeigen oder löschen könnten.</p>
+      <p>Für die Werbeverarbeitung werden diese Rechte gegenüber Google (siehe Links oben) und in
+      Frankreich gegenüber der CNIL (<a href="https://www.cnil.fr">cnil.fr</a>) ausgeübt.</p>
+      <p>Bei Fragen schreibe an <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Kinder</h2>
+      <p>Die App ist nicht für Kinder unter 13 Jahren bestimmt. Sie erhebt keine Daten von ihnen, und ihre
+      Werbung ist nicht auf ein kindliches Publikum ausgerichtet.</p>
+    </section>
+
+    <section>
+      <h2>8. Änderungen</h2>
+      <p>Jede Weiterentwicklung dieser Erklärung wird unter dieser Adresse veröffentlicht, mit einem
+      geänderten Aktualisierungsdatum. Ändert eine Weiterentwicklung die Art der Datenverarbeitung,
+      kündigt die App dies vor dem Inkrafttreten an.</p>
+    </section>
+  </div>
+  <!-- ============================ NEDERLANDS ============================ -->
+  <div class="i18n" data-lang="nl">
+
+    <section class="summary">
+      <h2>In één zin</h2>
+      <p>Je focussessies worden <strong>uitsluitend op je toestel</strong> bewaard. Wij ontvangen niets,
+      wij bewaren niets en wij sturen niets naar eigen servers — die hebben we namelijk niet.</p>
+    </section>
+
+    <section>
+      <h2>1. Wie is verantwoordelijk</h2>
+      <p>De app wordt uitgegeven door <strong>Balastar Entertainments</strong>, bereikbaar op
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Deze uitgever is
+      verwerkingsverantwoordelijke in de zin van de Algemene verordening gegevensbescherming (AVG).</p>
+    </section>
+
+    <section>
+      <h2>2. Gegevens die op je toestel worden bewaard</h2>
+      <p>Om te werken bewaart Lueurs gegevens lokaal, in de privéopslag van de app:</p>
+      <table>
+        <tr><th>Gegeven</th><th>Waarom</th><th>Waar</th></tr>
+        <tr><td>Geplande en werkelijk bestede duur van elke sessie</td><td>om je hemel en je statistieken op te bouwen</td><td>privéopslag van het toestel</td></tr>
+        <tr><td>Datum en tijdstip van het begin van de sessie</td><td>om de ster te plaatsen en reeksen dagen te berekenen</td><td>idem</td></tr>
+        <tr><td>Gekozen intentie (Werk, Studie, Lezen, Creatief, Sport)</td><td>kleur van de ster en verdeling van de tijd</td><td>idem</td></tr>
+        <tr><td>Vrijgespeelde prestaties</td><td>om het prestatierooster te tonen</td><td>idem</td></tr>
+        <tr><td>Gekozen hemelthema en vrijgespeelde thema's</td><td>om je hemel te tonen zoals je hem hebt ingesteld</td><td>idem</td></tr>
+        <tr><td>Instellingen (minder beweging, scherm aanhouden, laatst gekozen duur en intentie)</td><td>om je voorkeuren te respecteren</td><td>idem</td></tr>
+      </table>
+      <p>Deze gegevens <strong>verlaten het toestel nooit</strong>. Ze worden naar niemand gestuurd: niet
+      naar ons, niet naar een analysedienst, niet naar een cloudback-updienst. Er is <strong>geen
+      account</strong>, geen gebruikersidentificatie, geen synchronisatie tussen toestellen.</p>
+      <p>Een nuance die niet van Lueurs afhangt: als de systeemback-up van Android op je toestel is
+      ingeschakeld, kan het systeem de gegevens van de app opnemen in de back-up die aan je
+      Google-account is gekoppeld. Wij hebben daar <strong>geen toegang</strong> toe, en deze back-up
+      schakel je uit in de Android-instellingen (Back-up en herstellen). Als je van telefoon verandert of
+      de app opnieuw installeert, kan je voortgang via dit mechanisme worden hersteld.</p>
+      <p>De app <strong>vraagt niet naar je naam, je e-mailadres, je telefoonnummer of je locatie en
+      krijgt geen toegang tot je contacten, je foto's, je microfoon of je camera</strong>. Ze leest ook je
+      agenda niet.</p>
+    </section>
+
+    <section>
+      <h2>3. Deze gegevens verwijderen</h2>
+      <ul>
+        <li>Je kunt je volledige hemel en je statistieken op elk moment wissen via
+        <strong>Instellingen → Mijn hemel leegmaken</strong>.</li>
+        <li>De app verwijderen wist de lokale gegevens van het toestel. Is de systeemback-up van Android
+        ingeschakeld, dan kan er een kopie achterblijven in de back-up die aan je Google-account is
+        gekoppeld: die beheer je zelf en je kunt hem verwijderen in de instellingen van je Google- of
+        Android-account. Wij hebben <strong>geen toegang</strong> tot die kopie en bewaren zelf geen
+        kopie.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Advertenties (Google AdMob)</h2>
+      <p>De app is gratis en wordt gefinancierd met advertenties van <strong>Google AdMob</strong>. Dat
+      betekent dat Google en zijn advertentiepartners toegang kunnen krijgen tot bepaalde technische
+      informatie over je toestel om advertenties te tonen, met name:</p>
+      <ul>
+        <li>de <strong>advertentie-ID</strong> van je toestel (een identificatie die je kunt resetten en
+        die je in de Android-instellingen kunt wissen of uitschakelen);</li>
+        <li>het IP-adres, dat door de advertentieservers bij benadering wordt gelokaliseerd;</li>
+        <li>technische informatie over het toestel en het systeem (model, Android-versie, taal,
+        app-versie);</li>
+        <li>informatie over het tonen van advertenties (getoonde advertentie, klik, laadfout).</li>
+      </ul>
+      <p>Deze verwerkingen vallen onder de verantwoordelijkheid van Google. Meer informatie:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      en <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Wat wij niet doen</strong>: wij koppelen geen enkele van je focussessies aan je
+      advertentie-ID, wij bouwen geen profiel op en wij ontvangen geen persoonsgegevens over jou.</p>
+      <p><strong>Toestemming.</strong> Bij de eerste start vraagt een toestemmingsformulier (het
+      UMP-mechanisme van Google) naar je keuze. Zolang je niet hebt aanvaard, wordt er geen
+      advertentieverzoek gedaan: de app werkt normaal, zonder advertenties. Je kunt je keuze op elk moment
+      wijzigen of intrekken via <strong>Instellingen → Mijn privacykeuzes beheren</strong>.</p>
+      <p><strong>Waar de advertenties staan.</strong> Een banner alleen op het scherm « Mijn hemel ». Een
+      volledig scherm hoogstens één keer per vier afgeronde sessies, en alleen nadat je op « Doorgaan »
+      hebt getikt. Een beloningsvideo, die alleen start als je zelf op de knop « Een korte video bekijken
+      om vrij te spelen » tikt. Nooit een advertentie op het voorbereidingsscherm, nooit tijdens een
+      sessie.</p>
+    </section>
+
+    <section>
+      <h2>5. Machtigingen die de app vraagt</h2>
+      <table>
+        <tr><th>Machtiging</th><th>Reden</th></tr>
+        <tr><td><code>INTERNET</code></td><td>de advertenties laden (er worden geen sessiegegevens verstuurd)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>weten of er een verbinding is voordat een advertentie wordt aangevraagd</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>advertentie-ID, nodig voor advertenties op Android 13 en hoger</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>het scherm aanhouden tijdens een sessie (machtiging van de advertentie-SDK van Google, door Lueurs voor die functie gebruikt)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>gedeclareerd door de advertentie-SDK van Google: ze kaderen het gebruik dat Google maakt van advertentie-ID's en van de advertentie-API's van Android, en geven Lueurs geen toegang tot gegevens</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>gedeclareerd door een technische bibliotheek die met de advertentie-SDK wordt meegeleverd (AndroidX Work); Lueurs start geen voorgrondservice</td></tr>
+      </table>
+      <p>Geen van deze machtigingen geeft toegang tot persoonsgegevens: geen locatie, contacten, foto's,
+      microfoon of camera. Het gepubliceerde manifest bevat daarnaast een app-interne machtiging,
+      gegenereerd door de Android-basisbibliotheek, die geen toegang tot gegevens geeft.</p>
+    </section>
+
+    <section>
+      <h2>6. Je rechten (AVG)</h2>
+      <p>Je hebt recht op inzage, correctie, verwijdering, beperking en verzet. Omdat de gegevens van de
+      app op je toestel blijven en nooit naar ons worden gestuurd, oefen je deze rechten rechtstreeks in
+      de app uit (Instellingen → Mijn hemel leegmaken, of de app verwijderen): wij hebben geen gegevens
+      over jou die we je kunnen tonen of wissen.</p>
+      <p>Voor de advertentieverwerking oefen je deze rechten uit bij Google (zie de links hierboven) en,
+      in Frankrijk, bij de CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>Voor vragen: schrijf naar
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Kinderen</h2>
+      <p>De app is niet bedoeld voor kinderen onder 13 jaar. Ze verzamelt geen gegevens van hen en de
+      advertenties zijn niet op een kinderpubliek gericht.</p>
+    </section>
+
+    <section>
+      <h2>8. Wijzigingen</h2>
+      <p>Elke evolutie van dit beleid wordt op dit adres gepubliceerd, met een aangepaste datum. Als een
+      evolutie de manier verandert waarop gegevens worden verwerkt, meldt de app dat vóór de
+      inwerkingtreding.</p>
+    </section>
+  </div>
+
+  <!-- ============================ POLSKI ============================ -->
+  <div class="i18n" data-lang="pl">
+
+    <section class="summary">
+      <h2>W jednym zdaniu</h2>
+      <p>Twoje sesje skupienia są zapisywane <strong>wyłącznie na Twoim urządzeniu</strong>. Niczego nie
+      otrzymujemy, niczego nie przechowujemy i niczego nie przesyłamy na własne serwery — zresztą żadnych
+      nie mamy.</p>
+    </section>
+
+    <section>
+      <h2>1. Kto jest administratorem</h2>
+      <p>Aplikacja jest wydawana przez <strong>Balastar Entertainments</strong>, kontakt:
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Ten wydawca jest administratorem
+      danych w rozumieniu ogólnego rozporządzenia o ochronie danych (RODO).</p>
+    </section>
+
+    <section>
+      <h2>2. Dane zapisywane na Twoim urządzeniu</h2>
+      <p>Aby działać, Lueurs zapisuje dane lokalnie, w prywatnej pamięci aplikacji:</p>
+      <table>
+        <tr><th>Dana</th><th>Po co</th><th>Gdzie</th></tr>
+        <tr><td>Planowany i faktyczny czas każdej sesji</td><td>zbudować Twoje niebo i Twoje statystyki</td><td>prywatna pamięć urządzenia</td></tr>
+        <tr><td>Data i godzina rozpoczęcia sesji</td><td>umieścić gwiazdę i obliczyć serie dni</td><td>tak samo</td></tr>
+        <tr><td>Wybrany zamiar (Praca, Nauka, Czytanie, Twórczość, Sport)</td><td>kolor gwiazdy i podział czasu</td><td>tak samo</td></tr>
+        <tr><td>Odblokowane osiągnięcia</td><td>pokazać siatkę osiągnięć</td><td>tak samo</td></tr>
+        <tr><td>Wybrany motyw nieba i odblokowane motywy</td><td>pokazać Twoje niebo tak, jak je ustawiłeś</td><td>tak samo</td></tr>
+        <tr><td>Ustawienia (ograniczone animacje, nie wygaszaj ekranu, ostatnio wybrany czas i zamiar)</td><td>uszanować Twoje preferencje</td><td>tak samo</td></tr>
+      </table>
+      <p>Te dane <strong>nigdy nie opuszczają urządzenia</strong>. Nie są nikomu wysyłane: ani nam, ani
+      usłudze analitycznej, ani usłudze kopii zapasowej w chmurze. Nie ma <strong>żadnego konta</strong>,
+      żadnego identyfikatora użytkownika, żadnej synchronizacji między urządzeniami.</p>
+      <p>Niuanse, która nie zależy od Lueurs: jeśli kopia zapasowa systemu Android jest włączona na Twoim
+      urządzeniu, system może uwzględnić dane aplikacji w kopii zapasowej powiązanej z Twoim kontem
+      Google. Nie mamy do niej <strong>żadnego dostępu</strong>, a wyłącza się ją w ustawieniach Androida
+      (Kopia zapasowa i przywracanie). Po zmianie telefonu lub ponownej instalacji aplikacji Twoje
+      postępy mogą więc zostać przywrócone przez ten mechanizm.</p>
+      <p>Aplikacja <strong>nie prosi o Twoje imię, adres e-mail, numer telefonu ani lokalizację i nie
+      uzyskuje dostępu do Twoich kontaktów, zdjęć, mikrofonu ani aparatu</strong>. Nie czyta też Twojego
+      kalendarza.</p>
+    </section>
+
+    <section>
+      <h2>3. Usuwanie tych danych</h2>
+      <ul>
+        <li>Możesz w każdej chwili usunąć całe swoje niebo i statystyki w
+        <strong>Ustawienia → Wyczyść moje niebo</strong>.</li>
+        <li>Odinstalowanie aplikacji usuwa lokalne dane z urządzenia. Jeśli kopia zapasowa systemu
+        Android jest włączona, kopia może pozostać w kopii zapasowej powiązanej z Twoim kontem Google:
+        zarządzasz nią i możesz ją usunąć w ustawieniach swojego konta Google lub Androida. Nie mamy
+        <strong>żadnego dostępu</strong> do tej kopii i sami nie zachowujemy żadnej.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Reklamy (Google AdMob)</h2>
+      <p>Aplikacja jest bezpłatna i finansowana z reklam dostarczanych przez <strong>Google AdMob</strong>.
+      Oznacza to, że Google i jego partnerzy reklamowi mogą uzyskać dostęp do pewnych informacji
+      technicznych o Twoim urządzeniu, aby wyświetlać reklamy, w szczególności:</p>
+      <ul>
+        <li><strong>identyfikator reklamowy</strong> Twojego urządzenia (identyfikator, który można
+        zresetować i który można usunąć lub wyłączyć w ustawieniach Androida);</li>
+        <li>adres IP, zlokalizowany z grubsza przez serwery reklamowe;</li>
+        <li>informacje techniczne o urządzeniu i systemie (model, wersja Androida, język, wersja
+        aplikacji);</li>
+        <li>informacje o wyświetlaniu reklam (wyświetlona reklama, kliknięcie, błąd wczytywania).</li>
+      </ul>
+      <p>Te przetwarzania należą do obowiązków Google. Więcej informacji:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      i <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Czego nie robimy</strong>: nie wiążemy żadnej z Twoich sesji skupienia z Twoim
+      identyfikatorem reklamowym, nie tworzymy żadnego profilu i nie otrzymujemy żadnych danych osobowych
+      na Twój temat.</p>
+      <p><strong>Zgoda.</strong> Przy pierwszym uruchomieniu formularz zgody (mechanizm UMP firmy Google)
+      pyta o Twój wybór. Dopóki nie zaakceptujesz, nie jest wysyłane żadne zapytanie reklamowe:
+      aplikacja działa normalnie, bez reklam. Swój wybór możesz zmienić lub wycofać w każdej chwili w
+      <strong>Ustawienia → Zarządzaj moimi wyborami prywatności</strong>.</p>
+      <p><strong>Gdzie są reklamy.</strong> Baner tylko na ekranie „Moje niebo”. Pełny ekran najwyżej raz
+      na cztery ukończone sesje i tylko po naciśnięciu „Kontynuuj”. Wideo z nagrodą, które uruchamia się
+      tylko wtedy, gdy sam naciśniesz przycisk „Obejrzyj krótkie wideo, aby odblokować”. Nigdy reklam na
+      ekranie przygotowania, nigdy podczas sesji.</p>
+    </section>
+
+    <section>
+      <h2>5. Uprawnienia, o które prosi aplikacja</h2>
+      <table>
+        <tr><th>Uprawnienie</th><th>Powód</th></tr>
+        <tr><td><code>INTERNET</code></td><td>wczytywanie reklam (nie są przesyłane żadne dane sesji)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>sprawdzenie, czy jest połączenie, przed wysłaniem zapytania o reklamę</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>identyfikator reklamowy, niezbędny do działania reklam na Androidzie 13 i nowszych</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>utrzymanie ekranu włączonego podczas sesji (uprawnienie zadeklarowane przez zestaw SDK reklam Google, używane przez Lueurs do tej funkcji)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>zadeklarowane przez zestaw SDK reklam Google: określają, jak Google korzysta z identyfikatorów reklamowych i z reklamowych API Androida, i nie dają Lueurs dostępu do żadnych danych</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>zadeklarowane przez bibliotekę techniczną dołączoną do zestawu SDK reklam (AndroidX Work); Lueurs nie uruchamia żadnej usługi pierwszoplanowej</td></tr>
+      </table>
+      <p>Żadne z tych uprawnień nie daje dostępu do danych osobowych: ani lokalizacji, ani kontaktów, ani
+      zdjęć, ani mikrofonu, ani aparatu. Opublikowany manifest zawiera ponadto wewnętrzne uprawnienie
+      aplikacji, generowane przez podstawową bibliotekę Androida, które nie daje dostępu do żadnych
+      danych.</p>
+    </section>
+
+    <section>
+      <h2>6. Twoje prawa (RODO)</h2>
+      <p>Masz prawo dostępu, sprostowania, usunięcia, ograniczenia i sprzeciwu. Ponieważ dane aplikacji
+      pozostają na Twoim urządzeniu i nigdy nie są nam przekazywane, prawa te realizujesz bezpośrednio w
+      aplikacji (Ustawienia → Wyczyść moje niebo albo odinstalowanie): nie posiadamy żadnych danych na
+      Twój temat, które moglibyśmy pokazać lub usunąć.</p>
+      <p>W przypadku przetwarzania reklamowego prawa te realizujesz wobec Google (patrz linki powyżej), a
+      we Francji wobec CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>W razie pytań napisz na
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Dzieci</h2>
+      <p>Aplikacja nie jest przeznaczona dla dzieci poniżej 13. roku życia. Nie zbiera od nich żadnych
+      danych, a reklamy nie są skonfigurowane dla dziecięcego odbiorcy.</p>
+    </section>
+
+    <section>
+      <h2>8. Zmiany</h2>
+      <p>Każda zmiana tej polityki zostanie opublikowana pod tym adresem, ze zmienioną datą
+      aktualizacji. Jeśli zmiana wpłynie na sposób przetwarzania danych, aplikacja poinformuje o tym
+      przed jej wejściem w życie.</p>
+    </section>
+  </div>
+
+  <!-- ============================ SVENSKA ============================ -->
+  <div class="i18n" data-lang="sv">
+
+    <section class="summary">
+      <h2>I en mening</h2>
+      <p>Dina fokussessioner sparas <strong>endast på din enhet</strong>. Vi tar emot ingenting, vi
+      lagrar ingenting och vi skickar ingenting till egna servrar — vi har nämligen inga.</p>
+    </section>
+
+    <section>
+      <h2>1. Vem är ansvarig</h2>
+      <p>Appen ges ut av <strong>Balastar Entertainments</strong>, nåbar på
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>. Den här utgivaren är
+      personuppgiftsansvarig i den allmänna dataskyddsförordningens (GDPR) mening.</p>
+    </section>
+
+    <section>
+      <h2>2. Uppgifter som sparas på din enhet</h2>
+      <p>För att fungera sparar Lueurs uppgifter lokalt, i appens privata lagring:</p>
+      <table>
+        <tr><th>Uppgift</th><th>Varför</th><th>Var</th></tr>
+        <tr><td>Planerad och faktiskt använd tid för varje session</td><td>bygga din himmel och din statistik</td><td>enhetens privata lagring</td></tr>
+        <tr><td>Datum och klockslag för sessionens start</td><td>placera stjärnan och beräkna dagsserier</td><td>samma</td></tr>
+        <tr><td>Valt syfte (Arbete, Studier, Läsning, Kreativt, Träning)</td><td>stjärnans färg och fördelning av tid</td><td>samma</td></tr>
+        <tr><td>Upplåsta framsteg</td><td>visa rutnätet med framsteg</td><td>samma</td></tr>
+        <tr><td>Valt himmeltema och upplåsta teman</td><td>visa din himmel så som du ställt in den</td><td>samma</td></tr>
+        <tr><td>Inställningar (minskad rörelse, håll skärmen tänd, senast valda tid och syfte)</td><td>respektera dina preferenser</td><td>samma</td></tr>
+      </table>
+      <p>De här uppgifterna <strong>lämnar aldrig enheten</strong>. De skickas inte till någon: varken
+      till oss, till en analystjänst eller till en molnsäkerhetskopieringstjänst. Det finns <strong>inget
+      konto</strong>, ingen användaridentifierare, ingen synkronisering mellan enheter.</p>
+      <p>En nyans som inte beror på Lueurs: om Androids systemsäkerhetskopiering är aktiverad på din enhet
+      kan systemet ta med appens uppgifter i säkerhetskopian som är knuten till ditt Google-konto. Vi har
+      <strong>ingen tillgång</strong> till den, och den stängs av i Androids inställningar
+      (Säkerhetskopiering och återställning). När du byter telefon eller installerar om appen kan dina
+      framsteg därför återställas genom den här mekanismen.</p>
+      <p>Appen <strong>frågar inte efter ditt namn, din e-postadress, ditt telefonnummer eller din
+      position och får inte tillgång till dina kontakter, dina foton, din mikrofon eller din
+      kamera</strong>. Den läser inte heller din kalender.</p>
+    </section>
+
+    <section>
+      <h2>3. Radering av dessa uppgifter</h2>
+      <ul>
+        <li>Du kan radera hela din himmel och din statistik när som helst via
+        <strong>Inställningar → Rensa min himmel</strong>.</li>
+        <li>Om du avinstallerar appen raderas appens lokala uppgifter från enheten. Om Androids
+        systemsäkerhetskopiering är aktiverad kan en kopia finnas kvar i säkerhetskopian som är knuten
+        till ditt Google-konto: du hanterar den och kan radera den i inställningarna för ditt Google-
+        eller Android-konto. Vi har <strong>ingen tillgång</strong> till den kopian och behåller ingen
+        egen kopia.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Annonser (Google AdMob)</h2>
+      <p>Appen är gratis och finansieras av annonser från <strong>Google AdMob</strong>. Det innebär att
+      Google och deras annonspartner kan få tillgång till viss teknisk information om din enhet för att
+      visa annonser, särskilt:</p>
+      <ul>
+        <li>enhetens <strong>annons-ID</strong> (en identifierare som kan återställas och som kan raderas
+        eller stängas av i Androids inställningar);</li>
+        <li>IP-adressen, som annonsservrarna grovt lokaliserar;</li>
+        <li>teknisk information om enheten och systemet (modell, Android-version, språk, appversion);</li>
+        <li>information om annonsvisning (annons som setts, klick, inläsningsfel).</li>
+      </ul>
+      <p>Denna behandling ligger under Googles ansvar. Läs mer:
+      <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+      och <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p><strong>Vad vi inte gör</strong>: vi kopplar ingen av dina fokussessioner till ditt annons-ID, vi
+      bygger ingen profil och vi tar inte emot några personuppgifter om dig.</p>
+      <p><strong>Samtycke.</strong> Vid första starten frågar ett samtyckesformulär (Googles UMP-mekanism)
+      efter ditt val. Så länge du inte har godkänt görs ingen annonsbegäran: appen fungerar normalt, utan
+      annonser. Du kan ändra eller återkalla ditt val när som helst via
+      <strong>Inställningar → Hantera mina integritetsval</strong>.</p>
+      <p><strong>Var annonserna finns.</strong> En banner endast på skärmen ”Min himmel”. En helskärm
+      högst en gång per fyra avslutade sessioner, och bara efter att du tryckt på ”Fortsätt”. En belönad
+      video, som bara startar om du själv trycker på knappen ”Titta på en kort video för att låsa upp”.
+      Aldrig annonser på förberedelseskärmen, aldrig under en session.</p>
+    </section>
+
+    <section>
+      <h2>5. Behörigheter som appen begär</h2>
+      <table>
+        <tr><th>Behörighet</th><th>Orsak</th></tr>
+        <tr><td><code>INTERNET</code></td><td>ladda annonserna (inga sessionsuppgifter skickas)</td></tr>
+        <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>veta om en anslutning finns innan en annons begärs</td></tr>
+        <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>annons-ID, nödvändigt för annonser på Android 13 och senare</td></tr>
+        <tr><td><code>WAKE_LOCK</code></td><td>hålla skärmen tänd under en session (behörighet från Googles annons-SDK, som Lueurs använder för den funktionen)</td></tr>
+        <tr><td><code>ACCESS_ADSERVICES_AD_ID</code>, <code>ACCESS_ADSERVICES_ATTRIBUTION</code>, <code>ACCESS_ADSERVICES_TOPICS</code></td><td>deklareras av Googles annons-SDK: de ramar in Googles användning av annons-ID:n och Androids annons-API:er och ger Lueurs tillgång till inga uppgifter</td></tr>
+        <tr><td><code>FOREGROUND_SERVICE</code></td><td>deklareras av ett tekniskt bibliotek som följer med annons-SDK:n (AndroidX Work); Lueurs startar ingen förgrundstjänst</td></tr>
+      </table>
+      <p>Ingen av dessa behörigheter ger tillgång till personuppgifter: varken position, kontakter,
+      foton, mikrofon eller kamera. Det publicerade manifestet innehåller dessutom en appintern
+      behörighet, genererad av Androids basbibliotek, som inte ger tillgång till några uppgifter.</p>
+    </section>
+
+    <section>
+      <h2>6. Dina rättigheter (GDPR)</h2>
+      <p>Du har rätt till tillgång, rättelse, radering, begränsning och invändning. Eftersom appens
+      uppgifter stannar på din enhet och aldrig överförs till oss, utövar du dessa rättigheter direkt i
+      appen (Inställningar → Rensa min himmel, eller avinstallation): vi har inga uppgifter om dig som vi
+      skulle kunna visa eller radera.</p>
+      <p>För annonsbehandlingen utövar du dessa rättigheter hos Google (se länkarna ovan) och, i
+      Frankrike, hos CNIL (<a href="https://www.cnil.fr">cnil.fr</a>).</p>
+      <p>För frågor, skriv till
+      <a href="mailto:loannsloan@gmail.com">loannsloan@gmail.com</a>.</p>
+    </section>
+
+    <section>
+      <h2>7. Barn</h2>
+      <p>Appen är inte avsedd för barn under 13 år. Den samlar inte in några uppgifter från dem och
+      annonserna är inte konfigurerade för en barnpublik.</p>
+    </section>
+
+    <section>
+      <h2>8. Ändringar</h2>
+      <p>Alla ändringar av denna policy publiceras på den här adressen, med ett ändrat datum. Om en
+      ändring påverkar hur uppgifterna behandlas meddelar appen det före ikraftträdandet.</p>
+    </section>
+  </div>
+
   <footer>Lueurs : concentration · Balastar Entertainments · 1.0.0</footer>
 </div>
+
+<script>
+/* Langue par défaut : celle du navigateur si elle fait partie des neuf langues
+   proposées, sinon le français. Sans JavaScript, la page reste en français. */
+(function () {
+  var supported = ['fr', 'en', 'es', 'pt', 'it', 'de', 'nl', 'pl', 'sv'];
+  var list = navigator.languages || [navigator.language || 'fr'];
+  var chosen = 'fr';
+  for (var i = 0; i < list.length; i++) {
+    var base = String(list[i] || '').toLowerCase().split('-')[0];
+    if (supported.indexOf(base) !== -1) { chosen = base; break; }
+  }
+  var input = document.getElementById(chosen);
+  if (input) { input.checked = true; }
+  document.documentElement.lang = chosen;
+})();
+</script>
 </body>
 </html>
